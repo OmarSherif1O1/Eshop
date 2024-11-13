@@ -3,17 +3,17 @@ from .models import Product
 
 def product_list(request):
     products = Product.objects.all()  # Fetch all products from the database
-    return render(request, 'product_list.html', {'products': products})
+    return render(request, 'product/product_list.html', {'products': products})
 
 def product_detail(request, id):
-    products = product = get_object_or_404(Product, id=id)
-    return render(request, 'product_detail.html', {'products': products})
+    product = get_object_or_404(Product, id=id)
+    return render(request, 'product/product_detail.html', {'product': product})
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'store/home.html')
 
 def about_us(request):
-    return render(request, 'about_us.html')
+    return render(request, 'store/about_us.html')
 
 def contact_us(request):
-    return render(request, 'contact_us.html')
+    return render(request, 'store/contact_us.html')

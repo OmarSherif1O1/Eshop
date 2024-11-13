@@ -1,0 +1,18 @@
+{% extends "base.html"%}
+{% block title %}products - My E-commerce Site{% endblock %}
+{% block content %}
+    <div>    
+        <h1>{{ product.name }}</h1>
+        <p><strong>Price:</strong> ${{ product.price }}</p>
+        <p><strong>Stock:</strong> {{ product.stock }} available</p>
+        <p><strong>Description:</strong> {{ product.description }}</p>
+
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 400px;"/>
+        {% else %}
+            <p>No image available</p>
+        {% endif %}
+
+        <a href="{% url 'product_list' %}">Back to Product List</a>
+    </div>
+{% endblock %}

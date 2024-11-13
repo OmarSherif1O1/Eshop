@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}products - My E-commerce Site{% endblock %}
+{% block content%}
+<div>
+    <h1>Our Products</h1>
+    <ul>
+        {% for product in products %}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.description}}</p>
+              <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">product details</a>
+            </div>
+          </div>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
+

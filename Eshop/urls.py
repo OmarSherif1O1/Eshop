@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path, include  # include function added
 from django.conf import settings
 from django.conf.urls.static import static
+from store.views import about_us ,contact_us
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store.urls')),  # Include store app URLs
+    path('about/', about_us, name='about_us'),
+    path('contact/', contact_us, name='contact_us'),
 ]
 
 # Add this to serve media files in development
