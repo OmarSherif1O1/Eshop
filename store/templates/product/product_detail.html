@@ -1,18 +1,39 @@
 {% extends "base.html"%}
+
 {% block title %}products - My E-commerce Site{% endblock %}
 {% block content %}
-    <div>    
-        <h1>{{ product.name }}</h1>
-        <p><strong>Price:</strong> ${{ product.price }}</p>
-        <p><strong>Stock:</strong> {{ product.stock }} available</p>
-        <p><strong>Description:</strong> {{ product.description }}</p>
-
-        {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 400px;"/>
-        {% else %}
-            <p>No image available</p>
-        {% endif %}
-
-        <a href="{% url 'product_list' %}">Back to Product List</a>
-    </div>
+                <div>
+                    <h1>{{product.name}}</h1>
+                    <ul>
+                        <div class="card" style="width: 18rem;">
+                            {%if product.image %}
+                                <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}">
+                            {% else %}
+                                <p>No image available</p>
+                            {% endif %}
+                            {% if product.has_colors %}
+                                <label for="color-select">Choose a color:</label>
+                                <select id="color-select" name="color">
+                                <option value="" disabled selected>Choose a color</option>
+                            {% for color in product.get_color_list %}
+                                <option value="{{ color }}">{{ color }}</option>
+                            {% endfor %}
+                                </select>
+                            {% endif %}
+                            <div class="card-body">
+                            <h5 class="card-title">{{product.name}}</h5>
+                            <p class="card-text"><strong>Price:</strong> ${{ product.price }}</p>
+                            <p class="card-text"><strong>Stock:</strong> {{ product.stock }} available</p>
+                            <p class="card-text"><strong>Description:</strong> {{ product.description }}</p>
+                            <a href="{% url 'product_list' %}" class="btn btn-primary">Back to Product List</a>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
 {% endblock %}
+
+
+
+
+
+

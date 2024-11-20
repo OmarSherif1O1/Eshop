@@ -125,3 +125,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'  # URL to access media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # File system path to store media files
+
+LOGIN_REDIRECT_URL = 'home/'  # Redirect to the homepage after login
+
